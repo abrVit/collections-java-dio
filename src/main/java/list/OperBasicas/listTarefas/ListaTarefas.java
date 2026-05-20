@@ -42,6 +42,7 @@ public class ListaTarefas {
         tasks.adicionarTarefa("1");
         tasks.adicionarTarefa("2");
         tasks.adicionarTarefa("3");
+        tasks.adicionarTarefa("3");
 
         tasks.obterDescricoesTarefas();
         System.out.println(tasks.obterNumeroTotalTarefas());

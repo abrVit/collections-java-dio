@@ -16,21 +16,21 @@ public class CarrinhoDeCompras {
     }
 
     public void removerItem(String nome){
-        List<String> itemParaRemover = new ArrayList<>();
-
-        for (Itens compras : carrinho){
-            if (compras.getNome().equalsIgnoreCase(nome)){
-                itemParaRemover.add(nome);
+        for (Itens item : carrinho){
+            if (item.getNome().equalsIgnoreCase(nome)) {
+                int index = carrinho.lastIndexOf(item);
+                carrinho.remove(index);
             }
         }
-
-        carrinho.removeAll(itemParaRemover);
     }
 
     public double calcularValorTotal(){
-        int total = 0;
-        for (Itens valor : carrinho){
-            total += valor.getPreco();
+        double total = 0;
+        for (Itens value : carrinho){
+            double preco = value.getPreco();
+            int quant = value.getQuantidade();
+            double val = preco * quant;
+            total += val;
         }
         return total;
     }
@@ -39,7 +39,15 @@ public class CarrinhoDeCompras {
         System.out.println(carrinho);
     }
 
-    static void main(String[] args) {
-
+    public static void main(String[] args) {
+        CarrinhoDeCompras shop = new CarrinhoDeCompras();
+        shop.adicionarItem("Cola tudo", 10, 7.97);
+        shop.adicionarItem("Refrigerante", 4, 12);
+        shop.adicionarItem("Refrigerante", 4, 12);
+        System.out.println(shop.calcularValorTotal());
+        shop.exibirItens();
+        shop.removerItem("Refrigerante");
+        shop.exibirItens();
+        System.out.println(shop.calcularValorTotal());
     }
 }

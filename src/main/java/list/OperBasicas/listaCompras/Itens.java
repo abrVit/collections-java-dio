@@ -26,6 +26,6 @@ public class Itens {
 
     @Override
     public String toString() {
-        return nome + " -> " + quantidade + "R$" + preco +"\n";
+        return nome + " -> " + quantidade + " - R$ " + preco +"\n";
     }
 }
