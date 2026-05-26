@@ -25,27 +25,33 @@ public class CatalogoLivros {
             }
             return livrosPAutor;
         } else {
-            throw new RuntimeException("Lista esta vazia");
+            throw new RuntimeException("Lista esta vazia!");
         }
     }
 
     public List<Livro> pesquisarPorIntervaloAnos(int anoInicial, int anoFinal){
         List<Livro> publisAno = new ArrayList<>();
-
-        for (Livro anoPubli : listaLivros){
-            if (anoInicial >= anoPubli.getAnoPublicacao() && anoPubli.getAnoPublicacao() <= anoFinal){
-                publisAno.add(anoPubli);
+        if (!listaLivros.isEmpty()) {
+            for (Livro anoPubli : listaLivros) {
+                if (anoInicial >= anoPubli.getAnoPublicacao() && anoPubli.getAnoPublicacao() <= anoFinal) {
+                    publisAno.add(anoPubli);
+                }
             }
+            return publisAno;
+        } else {
+            throw new RuntimeException("Lista esta vazia!");
         }
-        return publisAno;
     }
 
     public Livro pesquisaPorTitulo(String titulo){
-
-        for (Livro titulos : listaLivros){
-            if (titulos.getTitulo().equalsIgnoreCase(titulo)){
-                return titulos;
+        if (!listaLivros.isEmpty()){
+            for (Livro titulos : listaLivros){
+                if (titulos.getTitulo().equalsIgnoreCase(titulo)){
+                    return titulos;
+                }
             }
+        } else {
+            throw new RuntimeException("Lista esta vazia!");
         }
         return null;
     }
