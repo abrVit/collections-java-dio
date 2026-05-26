@@ -15,27 +15,33 @@ public class CatalogoLivros {
         listaLivros.add(new Livro(titulo, autor, anoPublicacao));
     }
 
-    public Livro pesquisaPorAutor(String autor){
-        for (Livro livro : listaLivros){
-            if (livro.getAutor().equalsIgnoreCase(autor)){
-                return livro;
+    public List<Livro> pesquisaPorAutor(String autor){
+        List<Livro> livrosPAutor = new ArrayList<>();
+        if (!listaLivros.isEmpty()) {
+            for (Livro livro : listaLivros) {
+                if (livro.getAutor().equalsIgnoreCase(autor)) {
+                    livrosPAutor.add(livro);
+                }
             }
+            return livrosPAutor;
+        } else {
+            throw new RuntimeException("Lista esta vazia");
         }
-        return null;
     }
 
-    public void pesquisarPorIntervaloAnos(int anoInicial, int anoFinal){
+    public List<Livro> pesquisarPorIntervaloAnos(int anoInicial, int anoFinal){
         List<Livro> publisAno = new ArrayList<>();
 
         for (Livro anoPubli : listaLivros){
-            if (anoInicial < anoPubli.getAnoPublicacao() && anoPubli.getAnoPublicacao()< anoFinal){
+            if (anoInicial >= anoPubli.getAnoPublicacao() && anoPubli.getAnoPublicacao() <= anoFinal){
                 publisAno.add(anoPubli);
             }
         }
-        System.out.println(publisAno);
+        return publisAno;
     }
 
     public Livro pesquisaPorTitulo(String titulo){
+
         for (Livro titulos : listaLivros){
             if (titulos.getTitulo().equalsIgnoreCase(titulo)){
                 return titulos;
