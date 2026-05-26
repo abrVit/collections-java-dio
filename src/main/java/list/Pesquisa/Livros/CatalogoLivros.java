@@ -5,6 +5,22 @@ import java.util.List;
 
 public class CatalogoLivros {
 
+
+    public static void main(String[] args) {
+        CatalogoLivros livros = new CatalogoLivros();
+        livros.adicionarLivro("Livro 1", "Autor 1", 2019);
+        livros.adicionarLivro("Livro 2", "Autor 2", 2025);
+        livros.adicionarLivro("Livro 3", "Autor 2", 1990);
+        livros.adicionarLivro("Livro 4", "Autor 4", 2020);
+        livros.adicionarLivro("Livro 3", "Autor 5", 2017);
+
+        List<Livro> livroPorAno = livros.pesquisarPorIntervaloAnos(2014, 2026);
+        System.out.println(livroPorAno);
+
+        System.out.println(livros.pesquisaPorAutor("autor 2"));
+        System.out.println(livros.pesquisaPorTitulo("livro 3"));
+    }
+
     private List<Livro> listaLivros;
 
     public CatalogoLivros() {
@@ -33,7 +49,7 @@ public class CatalogoLivros {
         List<Livro> publisAno = new ArrayList<>();
         if (!listaLivros.isEmpty()) {
             for (Livro anoPubli : listaLivros) {
-                if (anoInicial >= anoPubli.getAnoPublicacao() && anoPubli.getAnoPublicacao() <= anoFinal) {
+                if (anoInicial <= anoPubli.getAnoPublicacao() && anoPubli.getAnoPublicacao() <= anoFinal) {
                     publisAno.add(anoPubli);
                 }
             }
