@@ -1,7 +1,6 @@
 package main.java.list.Pesquisa.Soma;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SomaNumeros {
 

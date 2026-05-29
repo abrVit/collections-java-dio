@@ -1,7 +1,6 @@
 package main.java.list.Pesquisa.Livros;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CatalogoLivros {
 
